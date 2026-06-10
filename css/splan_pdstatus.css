@@ -88,6 +88,10 @@
   stroke: #f04f24;
 }
 
+#splan_pdstatus .st0.active {
+  stroke: #f04f24;
+}
+
 
 #splan_pdstatus .st2 {
   fill: #fff;

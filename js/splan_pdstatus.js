@@ -191,6 +191,19 @@ function setState(state) {
             }
         }
     });
+
+    var stateLineIds = ['state1line', 'state2line', 'state3line', 'state4line', 'state5line', 'state6line'];
+    var activeLineId = activeGroup + 'line';
+    stateLineIds.forEach(function(id) {
+        var el = container.querySelector('#' + id);
+        if (el) {
+            if (id === activeLineId) {
+                el.classList.add('active');
+            } else {
+                el.classList.remove('active');
+            }
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {

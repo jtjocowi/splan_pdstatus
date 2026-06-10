@@ -61,6 +61,10 @@
   stroke: #f04f24;
 }
 
+.st0.active {
+  stroke: #f04f24;
+}
+
 .st2 {
   fill: #fff;
 }
