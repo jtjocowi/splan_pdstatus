@@ -1,11 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
-<head>
-<title>S-PLAN Plandata.dk STATUS</title>
-</head>
-<body>
-  <div id="splan_pdstatus">
+  <head>
+    <title>S-PLAN Plandata.dk STATUS</title>
+    <link rel="stylesheet" href="css/splan_pdstatus.css">
+  </head>
+  <body>
+
+    <div id="splan_pdstatus">
+    </div>
+
+    <div id="splan_pdstatus_language_select">
+      <label for="splan_pdstatus_language_select">Select language:</label>
+      <select id="splan_pdstatus_language_select">
+        <option value="en">English</option>
+        <option value="da">Danish</option>
+      </select>
+    </div>
+
+    <div id="splan_pdstatus_state_select">
+      <button data-state="edit_proposed_plan">State 1</button>
+      <button data-state="validate_proposed_plan">State 2</button>
+      <button data-state="proposed_plan_in_plandata">State 3</button>
+      <button data-state="edit_approved_plan">State 4</button>
+      <button data-state="validate_approved_plan">State 5</button>
+      <button data-state="approved_plan_in_plandata">State 6</button>
+    </div>
     
-  </div>
-</body>
+    <script src="js/splan_pdstatus.js"></script>
+  </body>
 </html>
