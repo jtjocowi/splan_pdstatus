@@ -2,6 +2,9 @@
   "name": "splan-pdstatus",
   "version": "1.0.0",
   "description": "S-PLAN Plandata.dk STATUS component",
+  "scripts": {
+    "serve": "npx serve ."
+  },
   "dependencies": {
     "@angular/core": "^19.0.0",
     "@angular/common": "^19.0.0",

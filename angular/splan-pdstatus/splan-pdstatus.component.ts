@@ -11,12 +11,14 @@ export type PdStatus =
 export type PdLanguage = 'en' | 'da';
 
 interface LanguageStrings {
-  edit_proposed_plan: string;
-  validate_proposed_plan: string;
-  proposed_plan: string;
-  edit_approved_plan: string;
-  validate_approved_plan: string;
-  approved_plan: string;
+  step_edit_proposed_plan: string;
+  step_validate_proposed_plan: string;
+  step_proposed_plan: string;
+  step_edit_approved_plan: string;
+  step_validate_approved_plan: string;
+  step_approved_plan: string;
+  plandata_proposed_plan: string;
+  plandata_approved_plan: string;
   plandata_logo: string;
 }
 
@@ -35,21 +37,25 @@ export class SplanPdstatusComponent implements OnChanges {
 
   private languageStrings: Record<PdLanguage, LanguageStrings> = {
     en: {
-      edit_proposed_plan: 'Edit proposed plan',
-      validate_proposed_plan: 'Validate proposed plan',
-      proposed_plan: 'PROPOSED PLAN',
-      edit_approved_plan: 'Edit approved plan',
-      validate_approved_plan: 'Validate approved plan',
-      approved_plan: 'APPROVED PLAN',
+      step_edit_proposed_plan: 'Edit',
+      step_validate_proposed_plan: 'Validate',
+      step_proposed_plan: 'Report',
+      step_edit_approved_plan: 'Edit',
+      step_validate_approved_plan: 'Validate',
+      step_approved_plan: 'Report',
+      plandata_proposed_plan: 'PROPOSED PLAN Reported',
+      plandata_approved_plan: 'APPROVED PLAN Reported',
       plandata_logo: 'Plandata.dk'
     },
     da: {
-      edit_proposed_plan: 'Rediger planforslag',
-      validate_proposed_plan: 'Valider planforslag',
-      proposed_plan: 'INDRAPPORTERET PLANFORSLAG',
-      edit_approved_plan: 'Rediger vedtaget plan',
-      validate_approved_plan: 'Valider vedtaget plan',
-      approved_plan: 'VEDTAGET PLAN',
+      step_edit_proposed_plan: 'Rediger',
+      step_validate_proposed_plan: 'Valider',
+      step_proposed_plan: 'Indrapporter',
+      step_edit_approved_plan: 'Rediger',
+      step_validate_approved_plan: 'Valider',
+      step_approved_plan: 'Indrapporter',
+      plandata_proposed_plan: 'PLANFORSLAG Indrapporteret',
+      plandata_approved_plan: 'VEDTAGET PLAN Indrapporteret',
       plandata_logo: 'Plandata.dk'
     }
   };
@@ -83,12 +89,14 @@ export class SplanPdstatusComponent implements OnChanges {
 
   private getStrings(language: PdLanguage): LanguageStrings {
     return this.languageStrings?.[language] ?? this.languageStrings?.['en'] ?? {
-      edit_proposed_plan: 'Edit proposed plan',
-      validate_proposed_plan: 'Validate proposed plan',
-      proposed_plan: 'PROPOSED PLAN',
-      edit_approved_plan: 'Edit approved plan',
-      validate_approved_plan: 'Validate approved plan',
-      approved_plan: 'APPROVED PLAN',
+      step_edit_proposed_plan: 'Edit',
+      step_validate_proposed_plan: 'Validate',
+      step_proposed_plan: 'Report',
+      step_edit_approved_plan: 'Edit',
+      step_validate_approved_plan: 'Validate',
+      step_approved_plan: 'Report',
+      plandata_proposed_plan: 'PROPOSED PLAN Reported',
+      plandata_approved_plan: 'APPROVED PLAN Reported',
       plandata_logo: 'Plandata.dk'
     };
   }
@@ -101,51 +109,28 @@ export class SplanPdstatusComponent implements OnChanges {
     return this.stateGroupMap[this.state] === groupId;
   }
 
-  getEditProposedLine1(): string {
-    return this.strings.edit_proposed_plan.split(' ')[0];
+  isTextActive(textId: string): boolean {
+    var activeGroup = this.stateGroupMap[this.state];
+    return textId === activeGroup + 'text' || (activeGroup === 'state6' && textId === 'state6text1');
   }
 
-  getEditProposedLine2(): string {
-    return this.strings.edit_proposed_plan.split(' ').slice(1).join(' ');
+  getPlandataProposedLine1(): string {
+    var parts = this.strings.plandata_proposed_plan.split(' ');
+    return parts.slice(0, -1).join(' ');
   }
 
-  getValidateProposedLine1(): string {
-    return this.strings.validate_proposed_plan.split(' ')[0];
+  getPlandataProposedLine2(): string {
+    var parts = this.strings.plandata_proposed_plan.split(' ');
+    return parts.slice(-1)[0];
   }
 
-  getValidateProposedLine2(): string {
-    return this.strings.validate_proposed_plan.split(' ').slice(1).join(' ');
+  getPlandataApprovedLine1(): string {
+    var parts = this.strings.plandata_approved_plan.split(' ');
+    return parts.slice(0, -1).join(' ');
   }
 
-  getProposedPlanLine1(): string {
-    return this.strings.proposed_plan.split(' ')[0];
-  }
-
-  getProposedPlanLine2(): string {
-    return this.strings.proposed_plan.split(' ').slice(1).join(' ');
-  }
-
-  getEditApprovedLine1(): string {
-    return this.strings.edit_approved_plan.split(' ')[0];
-  }
-
-  getEditApprovedLine2(): string {
-    return this.strings.edit_approved_plan.split(' ').slice(1).join(' ');
-  }
-
-  getValidateApprovedLine1(): string {
-    return this.strings.validate_approved_plan.split(' ')[0];
-  }
-
-  getValidateApprovedLine2(): string {
-    return this.strings.validate_approved_plan.split(' ').slice(1).join(' ');
-  }
-
-  getApprovedPlanLine1(): string {
-    return this.strings.approved_plan.split(' ')[0];
-  }
-
-  getApprovedPlanLine2(): string {
-    return this.strings.approved_plan.split(' ').slice(1).join(' ');
+  getPlandataApprovedLine2(): string {
+    var parts = this.strings.plandata_approved_plan.split(' ');
+    return parts.slice(-1)[0];
   }
 }
